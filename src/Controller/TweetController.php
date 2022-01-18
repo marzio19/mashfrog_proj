@@ -68,7 +68,6 @@ class TweetController extends AbstractController
         return $this->render('tweet/add_tweet.html.twig', array(
             'form' => $form->createView()
         ));
-
     }
 
     /**
