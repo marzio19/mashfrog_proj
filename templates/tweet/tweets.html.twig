@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <h1>Feed Tweets</h1>
+    {% for tweet in tweets %}
+        <p>
+        <p>{{ tweet.user.name }} {{ tweet.user.lastName }} ha tweetato: <br>
+            Testo del tweet: <br>
+            {{ tweet.text }}
+        </p>
+        <p style="font-size: 9px">-{{ tweet.date|date('d M Y H:i:s') }}</p>
+        <form method="POST" action="{{ path('edit_tweet',{id: tweet.id}) }}">
+            <input name="submitBnt" type="submit" value="Edit"/>
+        </form>
+        <form method="POST" action="{{ path('delete_tweet',{id: tweet.id}) }}">
+            <input name="submitBnt" type="submit" value="Delete"/>
+        </form>
+
+    {% endfor %}
+
+    </html>
+    <body>
+    <form method="POST" action="/tweets/add">
+        <input name="submitBnt" type="submit" value="New-Post"/>
+    </form>
+    </body>
+    </html>
+
+{% endblock %}
+
+{% block javascripts %}
+    <script src="/js/main.js"></script>
+{% endblock %}
+
